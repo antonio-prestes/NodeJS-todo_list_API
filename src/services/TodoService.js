@@ -3,7 +3,7 @@ const Todo = require("../models/Todo")
 
 module.exports = class TodoService {
 
-    static async getTodo(id){
+    static async getTodo(id) {
         try {
             return Todo.findById(id);
         } catch (error) {
@@ -31,6 +31,12 @@ module.exports = class TodoService {
         } catch (error) {
             console.log(error)
         }
+    }
+
+    static async updateTodo(id, data) {
+        let todoUpdated = await Todo.findOneAndUpdate(id, data, {new: true}
+        )
+        return (todoUpdated)
     }
 
     static async deleteTodo(_id) {

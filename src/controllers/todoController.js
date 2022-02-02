@@ -8,7 +8,6 @@ exports.get = async (req, res) => {
     } catch (error) {
         return res.status(500).json({error: error})
     }
-
 }
 exports.getAll = async (req, res) => {
     const todos = await TodoService.getAllTodos();
@@ -21,9 +20,13 @@ exports.getAll = async (req, res) => {
         return res.status(500).json(error)
     }
 }
-exports.update = (req, res) => {
-    console.log("UPDATE")
-    res.send("ok update")
+exports.update = async (req, res) => {
+    try {
+        const todoUpdate = await TodoService.updateTodo(req.body.id, req.body)
+        res.json(todoUpdate)
+    } catch (error) {
+        return res.status(500).json({error: error})
+    }
 }
 exports.add = async (req, res) => {
     try {
