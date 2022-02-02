@@ -1,5 +1,4 @@
 const mongoose = require("mongoose")
-const {response} = require("express");
 
 const user = "admin"
 const pass = "admin"
@@ -12,7 +11,7 @@ module.exports = {
             useNewUrlParser: true,
             useUnifiedTopology: true,
            // useFindAndModify: false,
-           // useCreateIndex: true,
+           //useCreateIndex: true,
         })
             .then((res) => console.log(`Connection Succesful ${res}`))
             .catch((err) => console.log(`Connection error ${err}`))
