@@ -7,7 +7,6 @@ const pass = process.env.MONGO_PASS
 module.exports = {
     init: () => {
         mongoose.connect(`mongodb+srv://${user}:${pass}@dieg-mongo.nvtds.mongodb.net/todo_sample?retryWrites=true&w=majority`, {
-            //mongoose.connect(`mongodb+srv://admin:admin@dieg-mongo.nvtds.mongodb.net/todo_sample?retryWrites=true&w=majority`, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             tls: true
