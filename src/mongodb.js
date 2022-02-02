@@ -1,19 +1,18 @@
 const mongoose = require("mongoose")
+require('dotenv').config()
 
-const user = "admin"
-const pass = "admin"
-const database = "todo_sample"
-const serverName = "dieg-mongo.nvtds.mongodb.net"
+const user = process.env.MONGO_USER
+const pass = process.env.MONGO_PASS
 
 module.exports = {
     init: () => {
-        mongoose.connect(`mongodb+srv://${user}:${pass}@${serverName}/${database}?retryWrites=true&w=majority`, {
+        mongoose.connect(`mongodb+srv://${user}:${pass}@dieg-mongo.nvtds.mongodb.net/todo_sample?retryWrites=true&w=majority`, {
+            //mongoose.connect(`mongodb+srv://admin:admin@dieg-mongo.nvtds.mongodb.net/todo_sample?retryWrites=true&w=majority`, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
-           // useFindAndModify: false,
-           //useCreateIndex: true,
+            tls: true
         })
             .then((res) => console.log(`Connection Succesful ${res}`))
-            .catch((err) => console.log(`Connection error ${err}`))
+            .catch((err) => console.log(`Connection error ${err} `))
     }
 }
